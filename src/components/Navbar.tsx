@@ -59,6 +59,12 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
+                <Link href="/add-book" className="text-gray-700 font-medium hover:bg-gray-50 hover:text-primary rounded-xl py-2.5 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+                  Add Book
+                </Link>
+              </li>
+              <li>
                 <button onClick={handleLogout} className="text-red-600 font-medium hover:bg-red-50 rounded-xl py-2.5 mt-1 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
                   Logout
