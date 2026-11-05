@@ -9,9 +9,6 @@ export default function Navbar() {
   const { data: session } = authClient.useSession();
   const router = useRouter();
 
-  // ==========================================
-  //     JWT Token Create & Store in LocalStorage
-  // ==========================================
   useEffect(() => {
     if (session?.user?.email) {
       fetch("http://localhost:5000/api/jwt", {
@@ -55,7 +52,7 @@ export default function Navbar() {
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-medium">
             <li><Link href="/">Home</Link></li>
-            <li><Link href="/books">All Books</Link></li>
+            <li><Link href="/all-books">All Books</Link></li>
             {session && (
               <>
                 <li><Link href="/add-book">Add Book</Link></li>
@@ -77,7 +74,7 @@ export default function Navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-medium text-gray-600 gap-1">
           <li><Link href="/" className="hover:text-primary">Home</Link></li>
-          <li><Link href="/books" className="hover:text-primary">All Books</Link></li>
+          <li><Link href="/all-books" className="hover:text-primary">All Books</Link></li>
           {session && (
             <>
               <li><Link href="/add-book" className="hover:text-primary">Add Book</Link></li>
