@@ -1,12 +1,26 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 export default function AddBookPage() {
   const [loading, setLoading] = useState(false);
+  const { data: session } = authClient.useSession();
+  
+  // ইউজারের ইমেইলটি কনসোলে চেক করার জন্য
+  useEffect(() => {
+    console.log("Current User Email:", session?.user?.email);
+  }, [session]);
 
   const handleAddBook = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // যদি সেশন না থাকে, তাহলে বই অ্যাড করতে দেবে না
+    if (!session?.user?.email) {
+      toast.error("You must be logged in to add a book!");
+      return;
+    }
+
     setLoading(true);
 
     const form = e.target as HTMLFormElement;
@@ -19,13 +33,18 @@ export default function AddBookPage() {
       quantity: parseInt((form.elements.namedItem("quantity") as HTMLInputElement).value),
       rating: parseFloat((form.elements.namedItem("rating") as HTMLInputElement).value),
       createdAt: new Date(),
+      // এই লাইনটিই সবচেয়ে গুরুত্বপূর্ণ! এটি আপনার ইমেইল ডেটাবেজে পাঠাবে।
+      adderEmail: session.user.email, 
     };
 
     try {
+      const token = localStorage.getItem("access-token");
+      
       const response = await fetch("http://localhost:5000/api/books", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`, 
         },
         body: JSON.stringify(newBook),
       });
