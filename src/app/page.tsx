@@ -2,9 +2,10 @@
 import { useEffect, useState } from "react";
 import Banner from "@/components/Banner";
 import Link from "next/link";
+import { Book } from "@/types";
 
 export default function Home() {
-  const [books, setBooks] = useState<any[]>([]);
+  const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
