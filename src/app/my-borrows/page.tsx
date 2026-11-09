@@ -30,7 +30,7 @@ export default function MyBorrowsPage() {
 
     const fetchBorrows = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/borrows?email=${session.user.email}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/borrows?email=${session.user.email}`);
         const data = await res.json();
         if (data.success) {
           setBorrows(data.borrows);
@@ -47,7 +47,7 @@ export default function MyBorrowsPage() {
 
   const handleReturn = async (borrowId: string) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/borrows/${borrowId}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/borrows/${borrowId}`, {
         method: "DELETE",
       });
       const data = await res.json();

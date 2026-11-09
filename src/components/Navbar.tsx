@@ -11,7 +11,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (session?.user?.email) {
-      fetch("http://localhost:5000/api/jwt", {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jwt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: session.user.email }),
