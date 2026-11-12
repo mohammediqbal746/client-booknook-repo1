@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/books`);
+        const response = await fetch('https://server-booknook-repo.vercel.app/api/books');
         const data = await response.json();
         if (data.success) {
           setBooks(data.books);

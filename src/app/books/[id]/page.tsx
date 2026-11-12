@@ -19,7 +19,7 @@ export default function BookDetailsPage() {
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/books/${id}`);
+        const res = await fetch(`https://server-booknook-repo.vercel.app/api/books/${id}`);
         const data = await res.json();
         if (data.success) {
           setBook(data.book);
@@ -67,7 +67,7 @@ export default function BookDetailsPage() {
 
     try {
       const token = localStorage.getItem("access-token");
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/borrows`, {
+      const res = await fetch(`https://server-booknook-repo.vercel.app/api/borrows`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

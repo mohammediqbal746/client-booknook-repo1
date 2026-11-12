@@ -30,7 +30,7 @@ export default function MyBooksPage() {
     // ডেটা ফেচ করার ফাংশন
     const fetchBooks = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/books?email=${session.user.email}`);
+        const res = await fetch(`https://server-booknook-repo.vercel.app/api/books?email=${session.user.email}`);
         const data = await res.json();
         if (data.success) {
           setBooks(data.books);
@@ -55,7 +55,7 @@ export default function MyBooksPage() {
     setSubmitting(true);
     try {
       const token = localStorage.getItem("access-token");
-      const res = await fetch(`http://localhost:5000/api/books/${bookToDelete}`, {
+      const res = await fetch(`https://server-booknook-repo.vercel.app/api/books/${bookToDelete}`, {
         method: "DELETE",
         headers: { authorization: `Bearer ${token}` }
       });
@@ -99,7 +99,7 @@ export default function MyBooksPage() {
 
     try {
       const token = localStorage.getItem("access-token");
-      const res = await fetch(`http://localhost:5000/api/books/${bookToUpdate._id}`, {
+      const res = await fetch(`https://server-booknook-repo.vercel.app/api/books/${bookToUpdate._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
