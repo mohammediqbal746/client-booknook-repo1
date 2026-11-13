@@ -74,7 +74,7 @@ export default function Navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-medium text-gray-600 gap-1">
           <li><Link href="/" className="hover:text-primary">Home</Link></li>
-          <li><Link href="/all-books" className="hover:text-primary">All Books</Link></li>
+          <li><Link href="/books" className="hover:text-primary">All Books</Link></li>
           {session && (
             <>
               <li><Link href="/add-book" className="hover:text-primary">Add Book</Link></li>
